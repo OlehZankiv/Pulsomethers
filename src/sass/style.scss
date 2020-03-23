@@ -5,6 +5,7 @@
 }
 
 .container {
+    position: relative;
     width: 950px;
     margin: 0 auto;
 }
@@ -14,4 +15,9 @@
 @import "blocks/buttons";
 @import "blocks/advantages";
 @import "blocks/titles";
-@import "./media";
+@import "blocks/consultation";
+@import "blocks/forms";
+@import "blocks/carousel";
+@import "blocks/catalog";
+
+@import "blocks/media";

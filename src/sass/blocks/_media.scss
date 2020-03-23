@@ -1,7 +1,21 @@
 /* Large desktops and laptops */
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     .container {
         width: 900px;
+    }
+
+    .carousel {
+        .container {
+            width: 700px;
+        }
+
+        .tns-item {
+            img {
+                width: 500px;
+                display: block;
+                margin: auto auto;
+            }
+        }
     }
 }
 
@@ -9,6 +23,32 @@
 @media (max-width: 991px) {
     .container {
         width: 720px;
+    }
+
+    .title {
+        &_left {
+            font-size: 30px;
+        }
+    }
+
+    .consultation {
+        &__descr {
+            font-size: 18px;
+        }
+    }
+
+    .carousel {
+        .container {
+            width: 500px;
+        }
+
+        .tns-item {
+            img {
+                width: 400px;
+                display: block;
+                margin: auto auto;
+            }
+        }
     }
 }
 
@@ -67,8 +107,11 @@
             height: 50px;
             font-size: 15px;
         }
-    }
 
+        &_submit {
+            width: 100%;
+        }
+    }
 
     .advantages {
         height: 870px;
@@ -101,6 +144,39 @@
 
     .title {
         font-size: 25px;
+
+        &_left {
+            font-size: 22px;
+        }
+    }
+
+    .consultation {
+        &__descr {
+            font-size: 16px;
+        }
+    }
+
+
+    .feed-form {
+        width: 260px;
+
+        input {
+            height: 40px;
+        }
+    }
+
+    .carousel {
+        .container {
+            width: 400px;
+        }
+
+        .tns-item {
+            img {
+                width: 350px;
+                display: block;
+                margin: auto auto;
+            }
+        }
     }
 }
 
@@ -148,6 +224,7 @@
         &__icons {
             width: 300px;
         }
+
         &__icon {
             font-size: 12px;
         }
@@ -168,6 +245,11 @@
             width: 200px;
             height: 45px;
             font-size: 13px;
+        }
+
+        &_submit {
+            width: 100%;
+            font-size: 15px;
         }
     }
 
@@ -203,10 +285,27 @@
 
     .title {
         font-size: 22px;
+
+        &_left {
+            font-size: 14px;
+        }
+    }
+
+    .consultation {
+        &__descr {
+            font-size: 13px;
+        }
+    }
+
+
+    .feed-form {
+        width: 100%;
+
+        input {
+            height: 40px;
+        }
     }
 }
 
 /* Landscape phones and smaller */
-@media (max-width: 320px) {
-    
-}
+@media (max-width: 320px) {}
