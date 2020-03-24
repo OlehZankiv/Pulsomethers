@@ -78,4 +78,101 @@ window.onload = () => {
     });
 
     //Modal
-};
+
+    let btnCons = document.querySelectorAll("[data-modal=consultation]"),
+        overlay = document.querySelector(".overlay"),
+        modalCons = document.querySelector("#consultation"),
+        modalOrd = document.querySelector("#order"),
+        modalTh = document.querySelector("#thanks"),
+        close = document.querySelectorAll(".modal__close");
+
+
+    btnCons.forEach((item) => {
+        item.addEventListener("click", () => {
+            fadeIn(overlay, 200, "block");
+            fadeIn(modalCons, 200, "flex");
+        });
+    });
+
+    let btnsBuy = document.querySelectorAll(".button_mini"),
+        productsName = document.querySelectorAll(".catalog-item__subtitle"),
+        modalOrdDescr = document.querySelector("#order .modal__descr");
+
+    btnsBuy.forEach((elem, i) => {
+        elem.addEventListener("click", () => {
+            modalOrdDescr.textContent = productsName[i].textContent;
+            fadeIn(overlay, 200, "block");
+            fadeIn(modalOrd, 200, "flex");
+        });
+    });
+
+
+    close.forEach((elem) => {
+        elem.addEventListener("click", () => {
+            fadeOut(overlay, 200);
+            fadeOut(modalCons, 200);
+            fadeOut(modalOrd, 200);
+            fadeOut(modalTh, 200);
+        });
+    })
+
+}
+
+function fadeIn(elem, ms, display) {
+    if (!elem)
+        return;
+
+    elem.style.opacity = 0;
+    elem.style.filter = "alpha(opacity=0)";
+    elem.style.visibility = "visible";
+
+    switch (display) {
+        case "block":
+            elem.style.display = "block";
+            break;
+        case "flex":
+            elem.style.display = "flex";
+            break;
+    }
+
+    if (ms) {
+        var opacity = 0;
+        var timer = setInterval(function () {
+            opacity += 50 / ms;
+            if (opacity >= 1) {
+                clearInterval(timer);
+                opacity = 1;
+            }
+            elem.style.opacity = opacity;
+            elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+        }, 50);
+    } else {
+        elem.style.opacity = 1;
+        elem.style.filter = "alpha(opacity=1)";
+    }
+}
+
+function fadeOut(elem, ms) {
+    if (!elem)
+        return;
+
+    if (ms) {
+        var opacity = 1;
+        var timer = setInterval(function () {
+            opacity -= 50 / ms;
+            if (opacity <= 0) {
+                clearInterval(timer);
+                opacity = 0;
+                elem.style.display = "none";
+                elem.style.visibility = "hidden";
+            }
+            elem.style.opacity = opacity;
+            elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+        }, 50);
+    } else {
+        elem.style.opacity = 0;
+        elem.style.filter = "alpha(opacity=0)";
+        elem.style.display = "none";
+        elem.style.visibility = "hidden";
+    }
+}
