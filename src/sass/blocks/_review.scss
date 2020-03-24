@@ -1,0 +1,30 @@
+.review {
+    margin-top: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__content {
+        margin-left: 50px;
+    }
+
+    &__name {
+        font-size: 18px;
+        color: #0D0D0D;
+        margin-bottom: 0;
+    }
+
+    &__under-name {
+        font-size: 14px;
+        color: #646464;
+        font-weight: 300;
+    }
+
+    &__descr {
+        margin-top: 19px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #0D0D0D;
+    }
+}

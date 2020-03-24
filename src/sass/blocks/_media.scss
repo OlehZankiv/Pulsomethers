@@ -17,6 +17,11 @@
             }
         }
     }
+
+    .catalog-item {
+        margin: 12px 6px 0 6px;
+        width: 288px;
+    }
 }
 
 /* Portrait tablets and medium desktops */
@@ -50,6 +55,15 @@
             }
         }
     }
+
+    .catalog__content {
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .catalog-item {
+        margin: 52px 6px 0 6px;
+    }
 }
 
 /* Portrait tablets and small desktops */
@@ -63,7 +77,6 @@
             display: none;
         }
     }
-
 
     .promo {
         &__header {
@@ -173,9 +186,25 @@
         .tns-item {
             img {
                 width: 350px;
-                display: block;
                 margin: auto auto;
+                display: block;
             }
+        }
+    }
+
+    .catalog__tab {
+        width: 150px;
+        font-size: 15px;
+    }
+
+    .review {
+        flex-direction: column;
+        margin-top: 45px;
+
+        &__content {
+            margin-top: 30px;
+            text-align: center;
+            margin-left: 0;
         }
     }
 }
@@ -305,7 +334,44 @@
             height: 40px;
         }
     }
+
+    .carousel .tns-item img {
+        width: 175px;
+    }
+
+    .carousel .container {
+        width: 175px;
+    }
+
+    .carousel .next-arrow img,
+    .carousel .prev-arrow img {
+        width: 25px;
+        height: 40px;
+    }
+
+    .catalog__tabs {
+        margin-top: 39px;
+    }
+
+    .catalog__tab {
+        width: 85px;
+        font-size: 9px;
+        height: 35px;
+    }
+
+    .catalog__content {
+        margin-top: 0;
+    }
+
+    .catalog-item {
+        margin: 35px 6px 0 6px;
+    }
+
+    .review {
+        margin-top: 60px;
+    }
 }
+
 
 /* Landscape phones and smaller */
 @media (max-width: 320px) {}
