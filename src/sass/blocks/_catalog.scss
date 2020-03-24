@@ -24,8 +24,7 @@
         margin: 0 5px;
         transition: .35s all;
         cursor: pointer;
-        z-index: 1;
-
+        
         &::after {
             content: "";
             position: absolute;

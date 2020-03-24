@@ -63,6 +63,19 @@ window.onload = () => {
                 right[i].classList.toggle("catalog-item__list_active");
             });
         });
-
     }
+
+    //Maps
+    let footerMap = document.querySelector(".footer__map"),
+        map = document.querySelector(".footer__map iframe");
+
+    footerMap.addEventListener("click", () => {
+        map.style.pointerEvents = "auto";
+    });
+
+    footerMap.addEventListener("mouseleave", () => {
+        map.style.pointerEvents = "none";
+    });
+
+    //Modal
 };
