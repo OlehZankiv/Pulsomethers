@@ -2,9 +2,22 @@
     min-height: 680px;
     padding: 100px 0 92px 0;
     background: url("../img/AfterPluses_BG.jpg") center (center/cover) no-repeat;
+
     &__descr {
         color: #fff;
         font-size: 20px;
         font-weight: 500;
+    }
+
+    .error {
+        box-shadow: 0px 0px 3px $main-color;
+    }
+
+    label.error {
+        color: white;
+        box-shadow: none;
+        text-align: center;
+        font-size: 14px;
+        margin: -7px 0 10px 0;
     }
 }

@@ -176,3 +176,29 @@ function fadeOut(elem, ms) {
         elem.style.visibility = "hidden";
     }
 }
+
+
+//Form validation
+function validateForm(selector) {
+    $(selector).validate({
+        rules: {
+            name: "required",
+            phone: "required",
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            name: "Пожалуйста, введите своё имя",
+            phone: "Пожалуйста, введите номер телефона",
+            email: {
+                required: "Пожалуйста, введите свою почту",
+                email: "Неправильно введён адрес почты"
+            }
+        }
+    })
+}
+validateForm("#consultation form");
+validateForm("#consultation-form");
+validateForm("#order form");

@@ -21,4 +21,14 @@
     &_mt25 {
         margin-top: 25px;
     }
+
+    .error {
+        box-shadow: 0px 0px 3px $main-color;
+    }
+    label.error {
+        box-shadow: none;
+        text-align: center; 
+        font-size: 14px;
+        margin: -7px 0 10px 0;
+    }
 }

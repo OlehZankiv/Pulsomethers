@@ -446,7 +446,12 @@
         width: 90%;
     }
 
-
+    .feed-form label.error {
+        box-shadow: none;
+        text-align: center;
+        font-size: 11px;
+        margin: -7px 0 10px 0;
+    }
 }
 
 /* Landscape phones and smaller */
