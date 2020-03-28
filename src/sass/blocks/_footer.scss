@@ -64,6 +64,11 @@
         img {
             height: 27px;
         }
+
+        animation: logo-footer 1s ease-in-out infinite alternate;
+        &:hover {
+            animation-play-state: paused;
+        }
     }
     &__help {
         color: rgb(240, 240, 240);

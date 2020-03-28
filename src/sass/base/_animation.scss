@@ -27,3 +27,13 @@
         transform: scale(1);
     }
 }
+
+@keyframes logo-footer {
+    to {
+        transform: rotate(-30deg);
+    }
+    
+    from {
+        transform: rotate(30deg);
+    }
+}
