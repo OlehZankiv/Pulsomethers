@@ -1,0 +1,29 @@
+@keyframes heart-beat {
+    to {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.025);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    57% {
+        transform: scale(1.1);
+    }
+
+    66% {
+        transform: scale(1.175);
+    }
+
+    85% {
+        transform: scale(1.025);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

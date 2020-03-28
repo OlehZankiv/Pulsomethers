@@ -115,6 +115,73 @@ window.onload = () => {
         });
     });
 
+
+
+    //Form validation
+    function validateForm(selector) {
+        $(selector).validate({
+            rules: {
+                name: "required",
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Пожалуйста, введите своё имя",
+                phone: "Пожалуйста, введите номер телефона",
+                email: {
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введён адрес почты"
+                }
+            }
+        })
+    }
+    validateForm("#consultation form");
+    validateForm("#consultation-form");
+    validateForm("#order form");
+
+    //Send message
+    $("form").submit(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function () {
+            $(this).find("input").val("");
+
+            fadeOut(modalCons, 1);
+            fadeOut(modalOrd, 1);
+            fadeIn(modalTh, 200, "flex");
+            fadeIn(overlay, 200, "block");
+
+            $("form").trigger("reset");
+        });
+        return false;
+    });
+
+    //Page Up
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 1600) {
+            $(".page-up").fadeIn("fast");
+        } else {
+            $(".page-up").fadeOut("fast");
+        }
+    });
+
+    $("a[href^='#']").click(function () {
+        const _href = $(this).attr("href");
+        $("html, body").animate({
+            scrollTop: $(_href).offset().top + "px"
+        });
+        return false;
+    });
+
+
     function fadeIn(elem, ms, display) {
         if (!elem)
             return;
@@ -173,51 +240,4 @@ window.onload = () => {
             elem.style.visibility = "hidden";
         }
     }
-
-
-    //Form validation
-    function validateForm(selector) {
-        $(selector).validate({
-            rules: {
-                name: "required",
-                phone: "required",
-                email: {
-                    required: true,
-                    email: true
-                }
-            },
-            messages: {
-                name: "Пожалуйста, введите своё имя",
-                phone: "Пожалуйста, введите номер телефона",
-                email: {
-                    required: "Пожалуйста, введите свою почту",
-                    email: "Неправильно введён адрес почты"
-                }
-            }
-        })
-    }
-    validateForm("#consultation form");
-    validateForm("#consultation-form");
-    validateForm("#order form");
-
-    //Send message
-    $("form").submit(function (event) {
-        event.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: "mailer/smart.php",
-            data: $(this).serialize()
-        }).done(function () {
-            $(this).find("input").val("");
-
-            fadeOut(modalCons, 1);
-            fadeOut(modalOrd, 1);
-            fadeIn(modalTh, 200, "flex");
-            fadeIn(overlay, 200, "block");
-
-            $("form").trigger("reset");
-        });
-        return false;
-    });
 }
