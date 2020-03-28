@@ -86,7 +86,6 @@ window.onload = () => {
         modalTh = document.querySelector("#thanks"),
         close = document.querySelectorAll(".modal__close");
 
-
     btnCons.forEach((item) => {
         item.addEventListener("click", () => {
             fadeIn(overlay, 200, "block");
@@ -114,91 +113,111 @@ window.onload = () => {
             fadeOut(modalOrd, 200);
             fadeOut(modalTh, 200);
         });
-    })
+    });
 
-}
+    function fadeIn(elem, ms, display) {
+        if (!elem)
+            return;
 
-function fadeIn(elem, ms, display) {
-    if (!elem)
-        return;
-
-    elem.style.opacity = 0;
-    elem.style.filter = "alpha(opacity=0)";
-    elem.style.visibility = "visible";
-
-    switch (display) {
-        case "block":
-            elem.style.display = "block";
-            break;
-        case "flex":
-            elem.style.display = "flex";
-            break;
-    }
-
-    if (ms) {
-        var opacity = 0;
-        var timer = setInterval(function () {
-            opacity += 50 / ms;
-            if (opacity >= 1) {
-                clearInterval(timer);
-                opacity = 1;
-            }
-            elem.style.opacity = opacity;
-            elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
-        }, 50);
-    } else {
-        elem.style.opacity = 1;
-        elem.style.filter = "alpha(opacity=1)";
-    }
-}
-
-function fadeOut(elem, ms) {
-    if (!elem)
-        return;
-
-    if (ms) {
-        var opacity = 1;
-        var timer = setInterval(function () {
-            opacity -= 50 / ms;
-            if (opacity <= 0) {
-                clearInterval(timer);
-                opacity = 0;
-                elem.style.display = "none";
-                elem.style.visibility = "hidden";
-            }
-            elem.style.opacity = opacity;
-            elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
-        }, 50);
-    } else {
         elem.style.opacity = 0;
         elem.style.filter = "alpha(opacity=0)";
-        elem.style.display = "none";
-        elem.style.visibility = "hidden";
-    }
-}
+        elem.style.visibility = "visible";
 
-
-//Form validation
-function validateForm(selector) {
-    $(selector).validate({
-        rules: {
-            name: "required",
-            phone: "required",
-            email: {
-                required: true,
-                email: true
-            }
-        },
-        messages: {
-            name: "Пожалуйста, введите своё имя",
-            phone: "Пожалуйста, введите номер телефона",
-            email: {
-                required: "Пожалуйста, введите свою почту",
-                email: "Неправильно введён адрес почты"
-            }
+        switch (display) {
+            case "block":
+                elem.style.display = "block";
+                break;
+            case "flex":
+                elem.style.display = "flex";
+                break;
         }
-    })
+
+        if (ms) {
+            var opacity = 0;
+            var timer = setInterval(function () {
+                opacity += 50 / ms;
+                if (opacity >= 1) {
+                    clearInterval(timer);
+                    opacity = 1;
+                }
+                elem.style.opacity = opacity;
+                elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+            }, 50);
+        } else {
+            elem.style.opacity = 1;
+            elem.style.filter = "alpha(opacity=1)";
+        }
+    }
+
+    function fadeOut(elem, ms) {
+        if (!elem)
+            return;
+
+        if (ms) {
+            var opacity = 1;
+            var timer = setInterval(function () {
+                opacity -= 50 / ms;
+                if (opacity <= 0) {
+                    clearInterval(timer);
+                    opacity = 0;
+                    elem.style.display = "none";
+                    elem.style.visibility = "hidden";
+                }
+                elem.style.opacity = opacity;
+                elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+            }, 50);
+        } else {
+            elem.style.opacity = 0;
+            elem.style.filter = "alpha(opacity=0)";
+            elem.style.display = "none";
+            elem.style.visibility = "hidden";
+        }
+    }
+
+
+    //Form validation
+    function validateForm(selector) {
+        $(selector).validate({
+            rules: {
+                name: "required",
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Пожалуйста, введите своё имя",
+                phone: "Пожалуйста, введите номер телефона",
+                email: {
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введён адрес почты"
+                }
+            }
+        })
+    }
+    validateForm("#consultation form");
+    validateForm("#consultation-form");
+    validateForm("#order form");
+
+    //Send message
+    $("form").submit(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function () {
+            $(this).find("input").val("");
+
+            fadeOut(modalCons, 1);
+            fadeOut(modalOrd, 1);
+            fadeIn(modalTh, 200, "flex");
+            fadeIn(overlay, 200, "block");
+
+            $("form").trigger("reset");
+        });
+        return false;
+    });
 }
-validateForm("#consultation form");
-validateForm("#consultation-form");
-validateForm("#order form");
