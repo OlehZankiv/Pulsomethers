@@ -49,7 +49,7 @@ window.onload = () => {
     });
 
     let left = document.querySelectorAll(".catalog-item__content"),
-        right = document.querySelectorAll(".catalog-item__list");
+        right = document.querySelectorAll(".catalog-item__wrapper-list");
 
     toggleItemDescr(".catalog-item__link");
     toggleItemDescr(".catalog-item__back");
@@ -173,7 +173,7 @@ window.onload = () => {
         }
     });
 
-    $("a[href^='#']").click(function () {
+    $("a[href^='#up']").click(function () {
         const _href = $(this).attr("href");
         $("html, body").animate({
             scrollTop: $(_href).offset().top + "px"
@@ -240,4 +240,7 @@ window.onload = () => {
             elem.style.visibility = "hidden";
         }
     }
+
+    //Animate 
+    new WOW().init();
 }
